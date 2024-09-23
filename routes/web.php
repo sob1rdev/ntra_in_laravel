@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Ad;
 use Illuminate\Support\Facades\Route;
 
 //Route::get('/', function () {
@@ -7,5 +8,6 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::get('/', function () {
-    return view('home');
+    $ads = Ad::all();
+    return view('home', compact('ads'));
 });
