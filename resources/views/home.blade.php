@@ -25,17 +25,16 @@
 
                                             <div>
                                                 <label for="buy-properties"
-                                                       class="form-label font-medium text-slate-900 dark:text-white">Select
-                                                    Categories:</label>
+                                                       class="form-label font-medium text-slate-900 dark:text-white">Fillial</label>
                                                 <div class="filter-search-form relative filter-border mt-2">
                                                     <i class="uil uil-estate icons"></i>
-                                                    <select class="form-select z-2" data-trigger name="choices-catagory"
+                                                    <select class="form-select z-2" data-trigger name="branch"
                                                             id="choices-catagory-buy"
-                                                            aria-label="Default select example">
-                                                        <option>Houses</option>
-                                                        <option>Apartment</option>
-                                                        <option>Offices</option>
-                                                        <option>Townhome</option>
+                                                              aria-label="Default select example">
+                                                        <option value="" selected disabled>Filiallardan birini tanlang</option>
+                                                        @foreach($branches as $branch)
+                                                            <option value="{{$branch->id}}">{{$branch->name}}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
@@ -81,8 +80,7 @@
 
         <div class="container relative">
             <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[30px]">
-
-                @foreach ($ads as $ad)
+            @foreach ($ads as $ad)
                     <div class="group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-gray-700 dark:hover:shadow-gray-700 overflow-hidden ease-in-out duration-500">
                         <div class="relative">
                             <img src="#" alt="">
@@ -102,17 +100,17 @@
 
                             <ul class="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center list-none">
                                 <li class="flex items-center me-4">
-                                    <i class="uil uil-compress-arrows text-2xl me-2 text-green-600"></i>
-                                    <span>{{ $ad->branch_id }}</span>
+                                    <i class="uil uil-mailbox text-2xl me-2 text-green-600"></i>
+                                    <span>{{ $ad->branch->name }}</span>
                                 </li>
 
                                 <li class="flex items-center me-4">
-                                    <i class="uil uil-bed-double text-2xl me-2 text-green-600"></i>
+                                    <i class="uil uil-home text-2xl me-2 text-green-600"></i>
                                     <span>{{ $ad->rooms }} xona</span>
                                 </li>
 
                                 <li class="flex items-center">
-                                    <i class="uil uil-bath text-2xl me-2 text-green-600"></i>
+                                    <i class="uil uil-user text-2xl me-2 text-green-600"></i>
                                     <span>{{ $ad->gender }}</span>
                                 </li>
                             </ul>
